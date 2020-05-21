@@ -1,0 +1,24 @@
+:root {
+    background-color: rgb(98, 101, 112);
+}
+
+.buttons {
+    background-color: violet; 
+    border-bottom: 0 none;
+	box-shadow: 0 1px 5px rgba(20, 20, 20, 0.781);
+    color: rgb(53, 53, 53);
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 10%;
+    line-height: 26px;
+    height: 26px;
+    min-width: 45px;
+    text-shadow:
+    -1px -1px 0 rgb(255, 255, 255),
+    1px -1px 0 rgb(255, 255, 255),
+    -1px 1px 0 rgb(255, 255, 255),
+    1px 1px 0 rgb(255, 255, 255);
+}
