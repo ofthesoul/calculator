@@ -2,7 +2,7 @@
 html {
     font-size: 75%;
     box-sizing: border-box;
-    background-color: gray;
+    background-color: rgb(98, 101, 112);
 }
 *, *::before, *::after {
     margin: 0;
@@ -36,7 +36,7 @@ html {
     width: 300px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-.calculator-screen {
+.display {
     width: 100%;
     font-size: 5rem;
     height: 80px;
