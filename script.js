@@ -17,99 +17,25 @@ const negbtn = document.getElementById("+-btn");
 const bkspc = document.getElementById("backspace");
 const acbtn = document.getElementById("allclearbtn");
 const equals = document.getElementById("equalsignbtn"); 
-const screen = document.getElementsByClassName("display");
+const screen = document.querySelector(".display");
+const numbers = document.getElementsByClassName("numbers");
+
 let displayVal = "0";
-let pendingEval = [];
-let evalStringArray = "";
-
-//EVENT LISTENERS
-const buttons = document.querySelector(".buttons");
-buttons.addEventListener("click", (event) => {
-    const { target } = event;
-    if (target.classList.contains("operator")) {
-        handleOperator(target.value);
-        updateDisplay();
-        return;
-    }
-    if (target.classList.contains("decibtn")) {
-        inputDecimal(target.value);
-        updateDisplay();
-        return;
-    }
-    if (target.classList.contains("acbtn")) {
-        resetCalculator();
-        updateDisplay();
-        return;
-    }
-    if (target.classList.contains("bkspc")) {
-        backspace();
-        updateDisplay();
-        return;
-    }
-    if (target.classList.contains("negbtn")) {
-        changeSign();
-        updateDisplay();
-        return;
-    }
-    if (target.classList.contains("num")) {
-        inputNumber(target.value);
-        updateDisplay(); 
-    }
-});
-
-document.addEventListener("keydown", (event) => {
-    const { key } = event;
-    if (isNaN(key)) {
-        if (key === "Enter") {
-            handleOperator("=");
-            updateDisplay();
-            return;
-        }
-        if (key === "+" || key === "-" || key === "/" || key === "*") {
-            handleOperator(key);
-            updateDisplay();
-            return;
-        }  
-        if (key === ".") {
-            inputDecimal(key);
-            updateDisplay();
-            return;
-        }
-        if (key === "Escape") {
-            resetCalculator();
-            updateDisplay();
-            return;
-        }     
-        if (key === "Backspace") {
-            backspace();
-            updateDisplay();
-            return;
-        }
-    }
-    else {
-        inputNumber(key);
-        updateDisplay();
-    }
-})
-
+let pendingEval;
+let evalStringArray = [];
 
 //FUNCTIONS
-
-function updateDisplay(){
-
+updateDisplay = (e) => {
+let btnVal = e.target.innerText;
+if(displayVal === "0") {
+    displayVal = "";
+    }
+displayVal += btnVal;
+screen.innertext = displayVal;
 };
 
-function handleOperator(){
 
-};
 
-function inputDecimal(){
-
-};
-
-function inputNumber() {
-
-};
 
 function multiply (array) {
 	if(array.length === 0) {
@@ -130,4 +56,7 @@ function subtract (x, y) {
 function divide(x, y) {
 	return x / y;
 }
+
+//EVENT LISTENERS
+
 
