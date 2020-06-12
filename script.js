@@ -14,7 +14,7 @@ const xbtn = document.getElementById("*btn");
 const minusbtn = document.getElementById("-btn");
 const addbtn = document.getElementById("+btn");
 const negbtn = document.getElementById("+-btn");
-const bkspc = document.getElementById("backspace");
+const bkspc = document.getElementById("backspacebtn");
 const acbtn = document.getElementById("allclearbtn");
 const equals = document.getElementById("equalsignbtn"); 
 const screen = document.querySelector(".display");
@@ -25,38 +25,67 @@ let pendingEval;
 let evalStringArray = [];
 
 //FUNCTIONS
-updateDisplay = (e) => {
-let btnVal = e.target.innerText;
-if(displayVal === "0") {
-    displayVal = "";
-    }
-displayVal += btnVal;
-screen.innertext = displayVal;
+updateDisplay = (newValue) => {
+    if(displayVal === "0") {
+        displayVal = "";
+        }
+    displayVal += newValue;
+    screen.value = displayVal;
 };
 
+equalsReturn = () => { 
 
+};
 
+insertDecimal = () => { 
 
-function multiply (array) {
+};
+
+changeSign = () => { 
+
+};
+
+allclear = () => { 
+    screen.value = "0";
+    displayVal = "0";
+};
+
+backspace = () => {
+    screen.value = screen.value.substr(0, screen.value.length - 1);
+    displayVal = screen.value;  
+};
+
+multiply = (array) => {
 	if(array.length === 0) {
 		return 0;
 	};
 	sum = array.reduce((total, amount) => total * amount);
 	return sum;
-}
+};
 
-function add(x, y) {
+addition = (x, y) => {
 	return x + y;
-}
+};
 
-function subtract (x, y) {
+subctract = (x, y) => {
 	return x - y;
-}
+};
 
-function divide(x, y) {
+divide = (x, y) => {
 	return x / y;
-}
+};
 
 //EVENT LISTENERS
 
-
+for (i = 0; i < numbers.length; i++) {
+    numbers[i].addEventListener("click", (e) => { updateDisplay(e.target.value) });
+};
+acbtn.addEventListener("click", (e) => { allclear(); });
+bkspc.addEventListener("click", (e) => { backspace(); });
+divibtn.addEventListener("click", (e) => { divide(); });
+xbtn.addEventListener("click", (e) => { multiply(); });
+minusbtn.addEventListener("click", (e) => { subctract(); });
+addbtn.addEventListener("click", (e) => { addition(); });
+negbtn.addEventListener("click", (e) => { changeSign(); });
+decibtn.addEventListener("click", (e) => { insertDecimal(); });
+equals.addEventListener("click", (e) => { equalsReturn(); });
