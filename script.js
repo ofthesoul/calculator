@@ -1,4 +1,5 @@
-// BUTTONS & DECLARATIONS
+// BUTTONS & DECLARATIONS --------------
+const btn0 = document.getElementById("zerobtn");
 const btn1 = document.getElementById("1btn");
 const btn2 = document.getElementById("2btn");
 const btn3 = document.getElementById("3btn");
@@ -24,7 +25,7 @@ let displayVal = "0";
 let pendingEval;
 let evalStringArray = [];
 
-//FUNCTIONS
+//FUNCTIONS --------------
 updateDisplay = (newValue) => {
     if(displayVal === "0") {
         displayVal = "";
@@ -33,7 +34,7 @@ updateDisplay = (newValue) => {
     screen.value = displayVal;
 };
 
-equalsReturn = () => { 
+operate = (x, y) => { //hitting equal sign button
 
 };
 
@@ -41,7 +42,7 @@ insertDecimal = () => {
 
 };
 
-changeSign = () => { 
+changeSign = () => {  //change number from neg/pos button
 
 };
 
@@ -53,14 +54,10 @@ allclear = () => {
 backspace = () => {
     screen.value = screen.value.substr(0, screen.value.length - 1);
     displayVal = screen.value;  
-};
-
-multiply = (array) => {
-	if(array.length === 0) {
-		return 0;
-	};
-	sum = array.reduce((total, amount) => total * amount);
-	return sum;
+    if(displayVal == "" || screen.value == "") {
+        displayVal = "0";
+        screen.value = "0";
+        };
 };
 
 addition = (x, y) => {
@@ -71,15 +68,23 @@ subctract = (x, y) => {
 	return x - y;
 };
 
+multiply = (array) => {
+	if(array.length === 0) {
+		return 0;
+	};
+	sum = array.reduce((total, amount) => total * amount);
+	return sum;
+};
+
 divide = (x, y) => {
 	return x / y;
 };
 
-//EVENT LISTENERS
-
+//EVENT LISTENERS --------------
 for (i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", (e) => { updateDisplay(e.target.value) });
 };
+btn0.addEventListener("click", (e) => { updateDisplay(e.target.value) });
 acbtn.addEventListener("click", (e) => { allclear(); });
 bkspc.addEventListener("click", (e) => { backspace(); });
 divibtn.addEventListener("click", (e) => { divide(); });
@@ -88,4 +93,6 @@ minusbtn.addEventListener("click", (e) => { subctract(); });
 addbtn.addEventListener("click", (e) => { addition(); });
 negbtn.addEventListener("click", (e) => { changeSign(); });
 decibtn.addEventListener("click", (e) => { insertDecimal(); });
-equals.addEventListener("click", (e) => { equalsReturn(); });
+equals.addEventListener("click", (e) => { operate(); });
+
+//KEYBOARD USAGE --------------
