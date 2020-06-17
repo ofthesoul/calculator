@@ -26,10 +26,19 @@ let pendingEval;
 let evalStringArray = [];
 
 //FUNCTIONS --------------
+let signChangeFlag = false;
+
 updateDisplay = (newValue) => {
+    if(displayVal.length > 5) { //character limit
+        alert("I'm not THAT smart...");
+        return;
+        };
     if(displayVal === "0") {
         displayVal = "";
-        }
+        };
+    if(signChangeFlag) {
+        displayVal = "";
+         };
     displayVal += newValue;
     screen.value = displayVal;
 };
@@ -38,17 +47,19 @@ operate = (x, y) => { //hitting equal sign button
 
 };
 
-insertDecimal = () => { 
-
-};
-
-changeSign = () => {  //change number from neg/pos button
-
+insertDecimal = (e) => { 
+    if (screen.value.includes(".")) {
+        alert("Too many decimals.");
+        return;
+        };
+    updateDisplay(e.target.value); 
+    console.log(displayVal);
 };
 
 allclear = () => { 
     screen.value = "0";
     displayVal = "0";
+    signChangeFlag = false;
 };
 
 backspace = () => {
@@ -84,6 +95,7 @@ divide = (x, y) => {
 for (i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", (e) => { updateDisplay(e.target.value) });
 };
+decibtn.addEventListener("click", (e) => { insertDecimal(e); });
 btn0.addEventListener("click", (e) => { updateDisplay(e.target.value) });
 acbtn.addEventListener("click", (e) => { allclear(); });
 bkspc.addEventListener("click", (e) => { backspace(); });
@@ -91,8 +103,11 @@ divibtn.addEventListener("click", (e) => { divide(); });
 xbtn.addEventListener("click", (e) => { multiply(); });
 minusbtn.addEventListener("click", (e) => { subctract(); });
 addbtn.addEventListener("click", (e) => { addition(); });
-negbtn.addEventListener("click", (e) => { changeSign(); });
-decibtn.addEventListener("click", (e) => { insertDecimal(); });
+negbtn.addEventListener("click", (e) => { 
+    signChangeFlag = true;
+    updateDisplay(displayVal * -1);
+    signChangeFlag = false;
+});
 equals.addEventListener("click", (e) => { operate(); });
 
 //KEYBOARD USAGE --------------
