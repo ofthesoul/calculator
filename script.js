@@ -29,7 +29,7 @@ let evalStringArray = [];
 let signChangeFlag = false;
 
 updateDisplay = (newValue) => {
-    if(displayVal.length > 5) { //character limit
+    if(displayVal.length > 10) { //character limit
         alert("I'm not THAT smart...");
         return;
         };
@@ -53,7 +53,6 @@ insertDecimal = (e) => {
         return;
         };
     updateDisplay(e.target.value); 
-    console.log(displayVal);
 };
 
 allclear = () => { 
@@ -99,7 +98,10 @@ decibtn.addEventListener("click", (e) => { insertDecimal(e); });
 btn0.addEventListener("click", (e) => { updateDisplay(e.target.value) });
 acbtn.addEventListener("click", (e) => { allclear(); });
 bkspc.addEventListener("click", (e) => { backspace(); });
-divibtn.addEventListener("click", (e) => { divide(); });
+divibtn.addEventListener("click", (e) => { 
+    divibtn.style.backgroundColor = "rgb(177, 124, 26)";
+    divide(); 
+});
 xbtn.addEventListener("click", (e) => { multiply(); });
 minusbtn.addEventListener("click", (e) => { subctract(); });
 addbtn.addEventListener("click", (e) => { addition(); });
