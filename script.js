@@ -1,3 +1,4 @@
+const calc = (function(){
 // BUTTONS & DECLARATIONS --------------
 const btn0 = document.getElementById("zerobtn");
 const btn1 = document.getElementById("1btn");
@@ -113,3 +114,26 @@ negbtn.addEventListener("click", (e) => {
 equals.addEventListener("click", (e) => { operate(); });
 
 //KEYBOARD USAGE --------------
+
+document.body.addEventListener("click", (e) => {
+    console.log(e.target);
+    const $clickedElement = event.target;
+    if ($clickedElement.classList.contains("numbers")) {
+        console.log("you clicked " + $clickedElement.textContent);
+    } else if ($clickedElement.id === "bkspc") {
+        console.log("you clicked 7");
+    } else if ($clickedElement.id === "acbtn") {
+        console.log("you clicked 7");
+    } else if ($clickedElement.id === "zerobtn") {
+        console.log("you clicked 7");
+    }
+
+});
+return {
+test: function() {
+    console.log("hey");
+}
+}
+})();
+//IIFE immediately invoked function
+calc.test();
