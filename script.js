@@ -76,41 +76,6 @@ operate = (x, y) => { //hitting equal button
         updateDisplay(sum);
 };
 
-oneFlag = () => { //trying to make it where you switch one on, the other switches off.
-    if (additionFlag === true) {
-        signChangeFlag = false;
-        subtractionFlag = false;
-        multiplyFlag = false;
-        divideFlag = false;
-        justUpdatedFlag = false;
-        additionFlag = false;
-        minusbtn.style.backgroundColor =  "rgb("+255+"," +179+"," +39+")";
-    } else if (subtractionFlag === true) {
-        signChangeFlag = false;
-        additionFlag = false;
-        multiplyFlag = false;
-        divideFlag = false;
-        justUpdatedFlag = false;
-        subtractionFlag = false;
-        addbtn.style.backgroundColor =  "rgb("+255+"," +179+"," +39+")";
-    } else if (divideFlag === true) {
-        signChangeFlag = false;
-        additionFlag = false;
-        subtractionFlag = false;
-        multiplyFlag = false;
-        justUpdatedFlag = false;
-        divibtn.style.backgroundColor =  "rgb("+255+"," +179+"," +39+")";
-    } else if (multiplyFlag === true) {
-        signChangeFlag = false;
-        additionFlag = false;
-        subtractionFlag = false;
-        divideFlag = false;
-        justUpdatedFlag = false;
-        multiplyFlag = false;
-        xbtn.style.backgroundColor =  "rgb("+255+"," +179+"," +39+")";
-    };
-};
-
 insertDecimal = (e) => { 
     if (screen.value.includes(".")) {
         alert("Too many decimals.");
