@@ -15,24 +15,19 @@ html {
   font-size: 20px;
 }
 
-#title {
+h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  position: absolute;
-  top: -10%;
-  left: 50%;
-  right: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  padding-top: -10px;
+  padding-bottom: 10px;
   width: 300px;
-  font-family: 'Courier New', Courier, monospace;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
-  color: lightgreen;
-  font-size: 24px;
+  font-family: 'Brush Script MT', cursive, monospace;
+  color: #4a4a4a;
+  font-size: 48px;
 }
 
 body {
@@ -73,7 +68,7 @@ input::-webkit-inner-spin-button {
 .calculator input {
   -webkit-box-shadow: inset -6px -6px 9px #fff, inset 6px 6px 9px rgba(0, 0, 0, 0.4);
           box-shadow: inset -6px -6px 9px #fff, inset 6px 6px 9px rgba(0, 0, 0, 0.4);
-  width: 320px;
+  width: 300px;
   height: 60px;
   padding: 16px 32px;
   text-align: right;
@@ -87,7 +82,7 @@ input::-webkit-inner-spin-button {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 0.8rem;
+  grid-gap: .9rem;
   margin-top: 20px;
 }
 
@@ -97,13 +92,12 @@ input::-webkit-inner-spin-button {
           box-shadow: -6px -6px 9px #fff, 6px 6px 9px rgba(0, 0, 0, 0.4);
   height: 60px;
   width: 60px;
-  background-color: #fff;
   border: none;
   border-radius: 60px;
   cursor: pointer;
-  background: #e9e9e9;
   -webkit-transition: 0.15s;
   transition: 0.15s;
+  background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
 }
 
 .calculator button:hover, .calculator button:active {
@@ -115,7 +109,13 @@ input::-webkit-inner-spin-button {
           box-shadow: inset -6px -6px 9px #fff, inset 6px 6px 9px rgba(0, 0, 0, 0.4);
 }
 
-.calculator .data-op__key, .calculator .equal-sign__key {
+.calculator .operator,
+.calculator .equal-sign {
+  color: #ff652f;
+}
+
+.calculator .all-clear,
+.calculator .backspace {
   color: #ff652f;
 }
 /*# sourceMappingURL=style.css.map */
