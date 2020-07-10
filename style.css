@@ -48,7 +48,7 @@ body {
   -webkit-box-shadow: -6px -6px 9px #fff, 6px 6px 9px rgba(0, 0, 0, 0.4);
           box-shadow: -6px -6px 9px #fff, 6px 6px 9px rgba(0, 0, 0, 0.4);
   padding: 2rem;
-  border-radius: 30px;
+  border-radius: 35px;
 }
 
 .calculator input,
@@ -87,21 +87,21 @@ input::-webkit-inner-spin-button {
 }
 
 .calculator button {
-  /*    <--- .calculator-keys "grid items" */
+  /*    <--- .calculator-keys / "grid items" */
   -webkit-box-shadow: -6px -6px 9px #fff, 6px 6px 9px rgba(0, 0, 0, 0.4);
           box-shadow: -6px -6px 9px #fff, 6px 6px 9px rgba(0, 0, 0, 0.4);
   height: 60px;
   width: 60px;
   border: none;
-  border-radius: 60px;
+  border-radius: 30px;
   cursor: pointer;
-  -webkit-transition: 0.15s;
-  transition: 0.15s;
+  -webkit-transition: 1s;
+  transition: 1s;
   background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
 }
 
 .calculator button:hover, .calculator button:active {
-  background-color: #ccc;
+  background: linear-gradient(145deg, #eaeaea, #cbcbcb);
 }
 
 .calculator button:active {
