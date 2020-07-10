@@ -9,20 +9,20 @@ document.querySelectorAll(".numbers").forEach(
     element => {
         element.onclick = () => {
     if(opPressed) {
-        $display.value = element.innerText;
+        $display.innerText = element.innerText;
         opPressed = false;
         console.log("test1");
-    } else if ($display.value === "0") {
-        $display.value = element.innerText;
+    } else if ($display.innerText === "0") {
+        $display.innerText = element.innerText;
         console.log("test2");
-    } else if ($display.value !== "0") {
-        $display.value = $display.value + element.innerText;
+    } else if ($display.innerText !== "0") {
+        $display.innerText = $display.innerText + element.innerText;
         console.log("test3");
     }
 }});
 
 const opCallback = opName => () => {
-    let currentVal = parseFloat($display.value);
+    let currentVal = parseFloat($display.innerText);
     
     if (buffer && buffer.length) {
         opPressed = true;
@@ -32,13 +32,13 @@ const opCallback = opName => () => {
         buffer.push({ value: result });
         buffer.push({ value: opName });
 
-        $display.value = buffer[0].value;
+        $display.innerText = buffer[0].value;
     } else {
         opPressed = true;
         buffer.push({ value: currentVal });
         buffer.push({ value: opName });
 
-        $display.value = buffer[0].value;
+        $display.innerText = buffer[0].value;
     }
 }
 
@@ -71,31 +71,31 @@ const evaluate = buffer => {
 
 document.querySelector('*[data-op="equals"]').onclick = () => {
     if (buffer && buffer.length) {
-        buffer.push({ value: parseFloat($display.value)});
-        $display.value = evaluate(buffer);
+        buffer.push({ value: parseFloat($display.innerText)});
+        $display.innerText = evaluate(buffer);
     }
 }
 
 document.querySelector('*[data-op="clear"]').onclick = () => {
-    $display.value = 0;
+    $display.innerText = 0;
     buffer.length = 0;
 }
 
 document.querySelector('*[data-op="neg"]').onclick = () => { 
-    $display.value = -parseFloat($display.value);
+    $display.innerText = -parseFloat($display.innerText);
 }
 
 document.querySelector('*[data-op="backspace"]').onclick = () => { 
-    $display.value = $display.value.substr(0, $display.value.length - 1);
-    if($display.value == "") {
-        $display.value = "0";
+    $display.innerText = $display.innerText.substr(0, $display.innerText.length - 1);
+    if($display.innerText == "") {
+        $display.innerText = "0";
         };
 }
 
 
 document.querySelector("#decimalbtn").onclick = () => { 
-    $display.value = $display.value.includes(".") ? 
-    $display.value : $display.value + ".";
+    $display.innerText = $display.innerText.includes(".") ? 
+    $display.innerText : $display.innerText + ".";
 }
 
 

@@ -51,21 +51,21 @@ body {
   border-radius: 35px;
 }
 
-.calculator input,
+.calculator .display,
 .calculator button {
   outline: none;
 }
 
-.calculator input::-webkit-outer-spin-button
-input::-webkit-inner-spin-button {
+.calculator .display::-webkit-outer-spin-button
+.display::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-.calculator input[type="number"] {
+.calculator .display[type="number"] {
   -moz-appearance: textfield;
 }
 
-.calculator input {
+.calculator .display {
   -webkit-box-shadow: inset -6px -6px 9px #fff, inset 6px 6px 9px rgba(0, 0, 0, 0.4);
           box-shadow: inset -6px -6px 9px #fff, inset 6px 6px 9px rgba(0, 0, 0, 0.4);
   width: 300px;
@@ -95,8 +95,8 @@ input::-webkit-inner-spin-button {
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: .25s;
+  transition: .25s;
   background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
 }
 

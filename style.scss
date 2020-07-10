@@ -42,18 +42,18 @@ body {
     padding: 2rem;
     border-radius: 35px;
     
-    input, 
+    .display, 
     button {
     outline: none;
     }
-    input::-webkit-outer-spin-button
-    input::-webkit-inner-spin-button {
+    .display::-webkit-outer-spin-button
+    .display::-webkit-inner-spin-button {
         -webkit-appearance: none;  
     }
-    input[type="number"]{
+    .display[type="number"]{
         -moz-appearance: textfield;
     }
-    input {
+    .display {
         @include shadow-inset; //text shadow gets cut off - small but annoying
         width: 300px;
         height: 60px;
@@ -76,7 +76,7 @@ body {
         border: none;
         border-radius: 30px;
         cursor: pointer;
-        transition: 1s; //not for background gradient, but when the buttons fade in on refresh etc
+        transition: .25s; //not for background gradient, but when the buttons fade in on refresh etc
         background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
         
         &:hover,                
