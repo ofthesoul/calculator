@@ -1,34 +1,51 @@
 const calc = (function(){
-// DECLARATIONS & EVENT LISTENERS --------------
 
 const $display = document.querySelector(".display");
-const DISPLAY_LIMIT = 12;
-const buffer = [];
 
-document.querySelectorAll(".numbers").forEach(   // NEW 
+const buffer = [];
+let opPressed = false;
+
+document.querySelectorAll(".numbers").forEach(
     element => {
-        element.onclick = () => $display.value = $display.value !== "0" ? 
-        $display.value + element.innerText : element.innerText
+        element.onclick = () => {
+    if(opPressed) {
+        $display.value = element.innerText;
+        opPressed = false;
+        console.log("test1");
+    } else if ($display.value === "0") {
+        $display.value = element.innerText;
+        console.log("test2");
+    } else if ($display.value !== "0") {
+        $display.value = $display.value + element.innerText;
+        console.log("test3");
     }
-)
+}});
+
 const opCallback = opName => () => {
     let currentVal = parseFloat($display.value);
-
+    
     if (buffer && buffer.length) {
+        opPressed = true;
         buffer.push({ value: currentVal });
 
         const result = evaluate(buffer);
-
         buffer.push({ value: result });
         buffer.push({ value: opName });
-        $display.value = "";
+
+        $display.value = buffer[0].value;
     } else {
+        opPressed = true;
         buffer.push({ value: currentVal });
-        buffer.push({ value:opName });
-        $display.value = "";
+        buffer.push({ value: opName });
+
+        $display.value = buffer[0].value;
     }
 }
- 
+
+for (const opName of ["add", "subtract", "divide", "multiply"]) {
+    document.querySelector(`.operator[data-op=${opName}]`).onclick = opCallback(opName);
+};
+
 const evaluate = buffer => {
     const secondOperand = buffer.pop().value;
     const operator = buffer.pop().value;
@@ -50,12 +67,7 @@ const evaluate = buffer => {
         default: 
             return secondOperand;
     }   
-
 }
-
-for (const opName of ["add", "subtract", "divide", "multiply"]) {
-    document.querySelector(`.operator[data-op=${opName}]`).onclick = opCallback(opName);
-};
 
 document.querySelector('*[data-op="equals"]').onclick = () => {
     if (buffer && buffer.length) {
@@ -79,40 +91,12 @@ document.querySelector('*[data-op="backspace"]').onclick = () => {
         $display.value = "0";
         };
 }
-document.querySelector('*[data-op="decimal"]').onclick = () => { 
-    if ($display.value.includes(".")) {
-        alert("Too many decimals.");
-        return;
-        };
-    updateDisplay(e.target.value); 
+
+
+document.querySelector("#decimalbtn").onclick = () => { 
+    $display.value = $display.value.includes(".") ? 
+    $display.value : $display.value + ".";
 }
-
-
-
-
-//FUNCTIONS --------------
-
-
-
-insertDecimal = (e) => { 
-    if (screen.value.includes(".")) {
-        alert("Too many decimals.");
-        return;
-        };
-    updateDisplay(e.target.value); 
-};
-
-
-backspace = () => {
-    $display.value = $display.value.substr(0, $display.value.length - 1);
-    if($display.value == "") {
-        $display.value = "0";
-        };
-};
-
-
-//EVENT LISTENERS / BUTTONS --------------
-
 
 
 //KEYBOARD USAGE --------------

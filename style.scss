@@ -62,7 +62,7 @@ body {
         -moz-appearance: textfield;
     }
     input {
-        @include shadow-inset;
+        @include shadow-inset; //text shadow gets cut off - small but annoying
         width: 300px;
         height: 60px;
         padding: 16px 32px;
@@ -87,7 +87,7 @@ body {
         transition: 0.15s;
         background: linear-gradient(145deg, #f9f9f9, #d2d2d2);
         
-        &:hover, 
+        &:hover,                 //hover isn't working
         &:active {
             background-color: #ccc;
         }
