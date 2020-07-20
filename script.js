@@ -79,11 +79,17 @@ const calc = (function () {
   let firstOperand = 0;
   let secondOperand = 0;
   let operator = "";
+  let toRound = "";
 
   let lastRunCalculation = {
     operator: "",
     firstOperand: 0,
     secondOperand: 0,
+  };
+
+  const roundResult = (toRound) => {
+    let rounded = toRound.toFixed(4);
+    return parseFloat(rounded);
   };
 
   const evaluate = (buffer) => {
@@ -102,16 +108,20 @@ const calc = (function () {
     }
     switch (operator) {
       case "add":
-        return firstOperand + secondOperand;
+        toRound = firstOperand + secondOperand;
+        return roundResult(toRound);
         break;
       case "subtract":
-        return firstOperand - secondOperand;
+        toRound = firstOperand - secondOperand;
+        return roundResult(toRound);
         break;
       case "multiply":
-        return firstOperand * secondOperand;
+        toRound = firstOperand * secondOperand;
+        return roundResult(toRound);
         break;
       case "divide":
-        return firstOperand / secondOperand;
+        toRound = firstOperand / secondOperand;
+        return roundResult(toRound);
         break;
       default:
         return secondOperand;
