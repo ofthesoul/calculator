@@ -1,6 +1,8 @@
 # calculator
 A calculator with behavior based on the calc in macOS and iOS.
 
+Launch in browser -> https://ofthesoul.github.io/calculator/
+
 Built With:
 
 Vanilla Javascript, HTML, and CSS/Sass.
